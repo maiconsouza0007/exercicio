@@ -1,0 +1,71 @@
+// 1. Ordenar elementos em ordem crescente
+function ordenarCrescente(conjunto) {
+    return conjunto.sort((a, b) => a - b);
+}
+
+// 2. Encontrar a posição da primeira ocorrência de um elemento
+function encontrarPosicao(conjunto, elemento) {
+    return conjunto.indexOf(elemento);
+}
+
+// 3. Unir elementos de dois arrays
+function unirArrays(array1, array2) {
+    return array1.concat(array2);
+}
+
+// 4. Inverter a ordem dos elementos em um array
+function inverterArray(array) {
+    return array.slice().reverse();
+}
+
+// 5. Retornar as chaves de um objeto
+function obterChaves(objeto) {
+    return Object.keys(objeto);
+}
+
+// 6. Retornar apenas números pares de um array
+function numerosPares(array) {
+    return array.filter(item => typeof item === 'number' && item % 2 === 0);
+}
+
+// 7. Juntar elementos de um array em uma string com um delimitador
+function juntarComDelimitador(array, delimitador) {
+    return array.join(delimitador);
+}
+
+// 8. Calcular média de notas de um array de objetos
+function calcularMedias(notasAlunos) {
+    const medias = notasAlunos.map(aluno => ({
+        nome: aluno.nome,
+        media: aluno.notas.reduce((acc, curr) => acc + curr, 0) / aluno.notas.length
+    }));
+
+    const mediaGeral = medias.reduce((acc, curr) => acc + curr.media, 0) / medias.length;
+    const maiorMedia = Math.max(...medias.map(aluno => aluno.media));
+    const menorMedia = Math.min(...medias.map(aluno => aluno.media));
+
+    return {
+        mediaGeral,
+        maiorMedia,
+        menorMedia
+    };
+}
+
+// 9. Dividir conjunto de elementos em conjuntos menores
+function dividirConjunto(conjunto, tamanho) {
+    const conjuntos = [];
+    for (let i = 0; i < conjunto.length; i += tamanho) {
+        conjuntos.push(conjunto.slice(i, i + tamanho));
+    }
+    return conjuntos;
+}
+
+// 10. Filtrar objetos por propriedade específica
+function filtrarPorPropriedade(objetos, propriedade) {
+    return objetos.filter(objeto => objeto.hasOwnProperty(propriedade));
+}
+
+// Exemplo de uso:
+
+const elementos = [1, 2, 3, 4, 5, 6, 7, 8];
+console.log(dividirConjunto(elementos, 2)); // Saída: [[1,2], [3,4], [5,6], [7,8]]
